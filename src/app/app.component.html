@@ -1,3 +1,21 @@
+<!--
 <app-issues-create></app-issues-create>
 <hr>
 <app-issues-display></app-issues-display>
+-->
+<main>
+
+  <div>
+    <h1>The issues lise</h1>
+
+    <nav>
+      <a routerLink="/"> List</a>
+      <a routerLink="/">-Add-</a>
+      <a routerLink="/">-Login-</a>
+      <a routerLink="/">-Signup-</a>
+    </nav>
+    <br>
+    <!-- This is where the route gets displayed -->
+    <router-outlet></router-outlet>
+  </div>
+</main>
