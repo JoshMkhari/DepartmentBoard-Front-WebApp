@@ -9,21 +9,29 @@ import { IssuesDisplayComponent } from './issues/issues-display/issues-display.c
 import {AuthInterceptor} from "./auth/auth.interceptor";
 import { LoginComponent } from './auth/login/login/login.component';
 import {AppRoutingModule} from "./app-routing.module";
+import { ErrorComponent } from './error/error/error.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from "@angular/material/dialog";
+import {ErrorInterceptor} from "./error/error.interceptor";
 
 @NgModule({
   declarations: [
     AppComponent,
     IssuesCreateComponent,
     IssuesDisplayComponent,
-    LoginComponent
+    LoginComponent,
+    ErrorComponent
   ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpClientModule,
-        AppRoutingModule
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatDialogModule
     ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true},
+              {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
