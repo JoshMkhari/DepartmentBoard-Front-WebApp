@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {IssuesServiceService} from "../issues-service.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-issues-display',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IssuesDisplayComponent implements OnInit {
 
-  constructor() { }
+  issues:{_id:string,id:string,name:string,_v:string}[] = [];
+
+  constructor(public issueservice: IssuesServiceService) { }
+
+  // @ts-ignore
+  private issuesubscription: Subscription;
 
   ngOnInit(): void {
+    this.issueservice.getissue_service();
+    this.issuesubscription = this.issueservice.getUpdateListener()
+      .subscribe((issues:{_id:string,id:string,name:string,_v:string}[])=>
+      {
+        this.issues = issues;
+      });
   }
 
+  ngOnDestroy()
+  {
+    this.issuesubscription.unsubscribe();
+  }
+
+  ondelete(issueid:string)
+  {
+    this.issueservice.deleteissue_service(issueid)
+  }
 }

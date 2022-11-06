@@ -1,1 +1,6 @@
-<p>issues-display works!</p>
+<div *ngFor="let issue of issues">
+  {{issue.id}}
+  {{issue.name}}
+
+  <button (click)="ondelete(issue._id)">Delete</button>
+</div>

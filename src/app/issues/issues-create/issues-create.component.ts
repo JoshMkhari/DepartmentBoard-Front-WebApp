@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
+import {IssuesServiceService} from "../issues-service.service";
 
 @Component({
   selector: 'app-issues-create',
@@ -8,7 +9,7 @@ import {NgForm} from "@angular/forms";
 })
 export class IssuesCreateComponent implements OnInit {
 
-  constructor() { }
+  constructor(public issueservice: IssuesServiceService) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +24,9 @@ export class IssuesCreateComponent implements OnInit {
     alert(issueform.value.enteredID
     + ':'
     + issueform.value.enteredName)
+
+    this.issueservice.addissue_service(issueform.value.enteredID,issueform.value.enteredName)
+    issueform.resetForm()
   }
 
 }
