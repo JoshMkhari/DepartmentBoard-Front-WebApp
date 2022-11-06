@@ -13,8 +13,7 @@ export class IssuesDisplayComponent implements OnInit {
 
   constructor(public issueservice: IssuesServiceService) { }
 
-  // @ts-ignore
-  private issuesubscription: Subscription;
+  private issuesubscription!: Subscription;
 
   ngOnInit(): void {
     this.issueservice.getissue_service();
