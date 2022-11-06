@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   {
     if (loginform.invalid){
       {
+        alert("you failed because form invalid")
         return;
       }
     }
