@@ -26,7 +26,7 @@ export class IssuesServiceService {
 
   getissue_service()
   {
-    //alert("getissue_service")
+    ("getissue_service")
     this.http.get<{message:string,issue:IssueModel[]}>('https://localhost:3000/api/issue')
       .subscribe((theissue)=>
       {
@@ -43,7 +43,8 @@ export class IssuesServiceService {
 
   deleteissue_service(issueid: string)
   {
-    this.http.delete('https://localhost:3000/api/issue' + issueid)
+    alert("this is issue id " + issueid)
+    this.http.delete('https://localhost:3000/api/issue/' + issueid)
       .subscribe(()=>
       {
         this.issuedisplay = this.issuedisplay.filter(issue => issue._id !== issueid);
