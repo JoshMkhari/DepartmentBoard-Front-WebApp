@@ -7,7 +7,6 @@ import {HttpClient} from "@angular/common/http";
 export class AuthServiceService {
 
   private token!: string;
-
   constructor(private http: HttpClient) { }
 
   signup(userusername:string, userpassword: string)
@@ -30,5 +29,17 @@ export class AuthServiceService {
 
   getToken(){
     return this.token;
+  }
+
+  loggedIn() {
+    if (this.token)
+    {
+      return true;
+    }else
+    {
+      let token = localStorage.getItem('token')? localStorage.getItem('token') : null;
+      return token != null;
+    }
+
   }
 }
