@@ -13,7 +13,7 @@ export class AuthServiceService {
   {
     this.http.post('https://localhost:3000/api/users/signup', {username:userusername, password:userpassword})
       .subscribe(response =>{
-
+        this.login(userusername,userpassword)
       });
   }
 

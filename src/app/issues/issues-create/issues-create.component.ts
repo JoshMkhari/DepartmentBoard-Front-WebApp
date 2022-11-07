@@ -14,8 +14,8 @@ export class IssuesCreateComponent implements OnInit {
               private _router : Router) { }
 
   ngOnInit(): void {
-  }
 
+  }
   onaddissue(issueform: NgForm)
   {
     if(issueform.invalid)

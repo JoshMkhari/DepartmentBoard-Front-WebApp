@@ -13,6 +13,7 @@ import { ErrorComponent } from './error/error/error.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from "@angular/material/dialog";
 import {ErrorInterceptor} from "./error/error.interceptor";
+import { SignupComponent } from './auth/login/signup/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {ErrorInterceptor} from "./error/error.interceptor";
     IssuesCreateComponent,
     IssuesDisplayComponent,
     LoginComponent,
-    ErrorComponent
+    ErrorComponent,
+    SignupComponent
   ],
     imports: [
         BrowserModule,
