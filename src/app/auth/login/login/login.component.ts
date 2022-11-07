@@ -22,16 +22,11 @@ export class LoginComponent implements OnInit {
   {
     if (loginform.invalid){
       {
-        alert("you failed because form invalid")
         return;
       }
     }
-    if (this.option == '/login') {
-
-      this.authservice.login(loginform.value.enteredusername, loginform.value.enteredpassword)
-      this.router.navigate(['']);
-    }else {
-      this.authservice.signup(loginform.value.enteredusername, loginform.value.enteredpassword)
-    }
+    this.authservice.login(loginform.value.enteredusername, loginform.value.enteredpassword)
+    this.router.navigate(['']);
+    this.authservice.signup(loginform.value.enteredusername, loginform.value.enteredpassword)
   }
 }
