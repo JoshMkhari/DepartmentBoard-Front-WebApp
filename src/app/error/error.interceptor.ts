@@ -17,7 +17,17 @@ export class ErrorInterceptor implements HttpInterceptor{
         {
           errorMessage = error.error.message;
         }
-        this.dialog.open(ErrorComponent, {data:{message:errorMessage}});
+        //https://stackoverflow.com/questions/27770484/typescript-correct-way-to-do-string-equality
+        if(errorMessage === "Invalid token")
+        {
+          //Can I count number of invalid token attempts
+          //Maybe log ip address and count amount of attempts?
+          //https://stackoverflow.com/questions/34338440/how-to-redirect-to-an-external-url-in-angular2
+          window.location.href = 'login';
+        }else
+        {
+          this.dialog.open(ErrorComponent, {data:{message:errorMessage}});
+        }
         return throwError(error);
       })
     );
