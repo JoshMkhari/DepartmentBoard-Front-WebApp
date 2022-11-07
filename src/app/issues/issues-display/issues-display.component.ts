@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {IssuesServiceService} from "../issues-service.service";
 import {Subscription} from "rxjs";
+import {IssueModel} from "../../IssuesModel";
 
 @Component({
   selector: 'app-issues-display',
@@ -9,7 +10,7 @@ import {Subscription} from "rxjs";
 })
 export class IssuesDisplayComponent implements OnInit {
 
-  issues:{_id:string,id:string,name:string,_v:string}[] = [];
+  issues:IssueModel[] = [];
 
   constructor(public issueservice: IssuesServiceService) { }
 
@@ -18,10 +19,11 @@ export class IssuesDisplayComponent implements OnInit {
   ngOnInit(): void {
     this.issueservice.getissue_service();
     this.issuesubscription = this.issueservice.getUpdateListener()
-      .subscribe((issues:{_id:string,id:string,name:string,_v:string}[])=>
+      .subscribe((issues:IssueModel[])=>
       {
         this.issues = issues;
       });
+
   }
 
   ngOnDestroy()

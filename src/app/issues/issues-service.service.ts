@@ -1,20 +1,22 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Subject} from "rxjs";
+import {IssueModel} from "../IssuesModel";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class IssuesServiceService {
 
-  private issuedisplay:{_id:string,id:string,name:string,_v:string}[] = [];
-  private updateissuedisplay = new Subject<{_id:string,id:string,name:string,_v:string}[]>();
+  private issuedisplay:IssueModel[] = [];
+  private updateissuedisplay = new Subject<IssueModel[]>();
 
   constructor(private http: HttpClient) { }
 
   addissue_service(pid:string, pname:string)
   {
-    this.http.post<{message:string,issue:any}>('https://localhost:3000/api/issue',{id:pid,name:pname})
+    this.http.post<{message:string,issue:IssueModel}>('https://localhost:3000/api/issue',{id:pid,name:pname})
       .subscribe((theissue)=>
       {
         this.issuedisplay.push(theissue.issue);
@@ -24,11 +26,18 @@ export class IssuesServiceService {
 
   getissue_service()
   {
-    this.http.get<{message:string,issue:any}>('https://localhost:3000/api/issue')
+    //alert("getissue_service")
+    this.http.get<{message:string,issue:IssueModel[]}>('https://localhost:3000/api/issue')
       .subscribe((theissue)=>
       {
-        this.issuedisplay.push(theissue.issue);
-        this.updateissuedisplay.next([...this.issuedisplay]);
+        //https://stackoverflow.com/questions/2799283/use-a-json-array-with-objects-with-javascript
+        const arrayOfObjects = theissue.issue;
+        for (let i = 0; i < theissue.issue.length; i++) {
+          const object = arrayOfObjects[i];
+          const issuemodel = new IssueModel(object._id,object.id,object.name,object.__v);
+          this.issuedisplay.push(issuemodel);
+          this.updateissuedisplay.next([...this.issuedisplay]);
+        }
       })
   }
 
@@ -47,3 +56,5 @@ export class IssuesServiceService {
     return this.updateissuedisplay.asObservable();
   }
 }
+
+
