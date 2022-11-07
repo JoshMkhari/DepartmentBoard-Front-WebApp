@@ -26,7 +26,14 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/plugins/nprogress/nprogress.js",
+              "src/assets/plugins/jquery/jquery.min.js",
+              "src/assets/plugins/bootstrap/js/bootstrap.bundle.min.js",
+              "src/assets/plugins/data-tables/jquery.datatables.min.js",
+              "src/assets/plugins/data-tables/datatables.bootstrap4.min.js",
+              "src/assets/js/sleek.js"
+            ]
           },
           "configurations": {
             "production": {
