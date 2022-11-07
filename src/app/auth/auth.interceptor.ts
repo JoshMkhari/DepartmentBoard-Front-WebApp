@@ -17,9 +17,10 @@ export class AuthInterceptor implements HttpInterceptor{
     //https://stackoverflow.com/questions/3390396/how-can-i-check-for-undefined-in-javascript
     if(authToken)
     {
-      alert("this is token " + authToken)
+
     }else
     {
+      ////https://stackoverflow.com/questions/49986926/how-to-make-login-status-persistent-in-angular-2-3-4-5
       let token = localStorage.getItem('token')? localStorage.getItem('token') : null;
       if(token != null)
       {
