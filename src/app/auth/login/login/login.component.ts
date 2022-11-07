@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
       }
     }
     if (this.option == '/login') {
+
       this.authservice.login(loginform.value.enteredusername, loginform.value.enteredpassword)
     }else {
       this.authservice.signup(loginform.value.enteredusername, loginform.value.enteredpassword)
