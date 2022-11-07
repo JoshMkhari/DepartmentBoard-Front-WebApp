@@ -27,6 +27,7 @@ export class IssuesServiceService {
   getissue_service()
   {
     ("getissue_service")
+    this.issuedisplay = [];
     this.http.get<{message:string,issue:IssueModel[]}>('https://localhost:3000/api/issue')
       .subscribe((theissue)=>
       {
