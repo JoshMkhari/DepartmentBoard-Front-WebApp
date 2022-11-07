@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {IssuesServiceService} from "../issues-service.service";
 import {Subscription} from "rxjs";
 import {IssueModel} from "../../IssuesModel";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-issues-display',
@@ -12,7 +13,8 @@ export class IssuesDisplayComponent implements OnInit {
 
   issues:IssueModel[] = [];
 
-  constructor(public issueservice: IssuesServiceService) { }
+  constructor(public issueservice: IssuesServiceService,
+              private _router : Router) { }
 
   private issuesubscription!: Subscription;
 
@@ -34,5 +36,11 @@ export class IssuesDisplayComponent implements OnInit {
   ondelete(issueid:string)
   {
     this.issueservice.deleteissue_service(issueid)
+  }
+
+  logOut()
+  {
+    localStorage.removeItem('token')
+    this._router.navigate(['/login']);
   }
 }
