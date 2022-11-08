@@ -43,7 +43,6 @@ export class IssuesServiceService {
 
   deleteissue_service(issueid: string)
   {
-    alert("this is issue id " + issueid)
     this.http.delete('https://localhost:3000/api/issue/' + issueid)
       .subscribe(()=>
       {

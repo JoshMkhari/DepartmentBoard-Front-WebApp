@@ -25,7 +25,6 @@ export class AuthServiceService {
         this.token = response.token;
         //https://stackoverflow.com/questions/49986926/how-to-make-login-status-persistent-in-angular-2-3-4-5
         localStorage.setItem('token', response.token);
-        alert("token has been stored as " + localStorage.getItem('token'))
         this.router.navigate(['']);
       });
   }
