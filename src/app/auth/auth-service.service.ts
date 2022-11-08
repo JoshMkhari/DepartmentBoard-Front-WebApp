@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
 export class AuthServiceService {
 
   private token!: string;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private  router: Router) { }
 
   signup(userusername:string, userpassword: string)
   {
@@ -24,6 +25,8 @@ export class AuthServiceService {
         this.token = response.token;
         //https://stackoverflow.com/questions/49986926/how-to-make-login-status-persistent-in-angular-2-3-4-5
         localStorage.setItem('token', response.token);
+        alert("token has been stored as " + localStorage.getItem('token'))
+        this.router.navigate(['']);
       });
   }
 
@@ -31,16 +34,4 @@ export class AuthServiceService {
     return this.token;
   }
 
-  loggedIn() {
-    if (this.token)
-    {
-      return true;
-    }else
-    {
-      let token = localStorage.getItem('token')? localStorage.getItem('token') : null;
-      return token != null;
-
-    }
-
-  }
 }

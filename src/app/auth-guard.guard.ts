@@ -12,11 +12,14 @@ export class AuthGuardGuard implements CanActivate {
                private _router : Router){}
 
   canActivate () : boolean{
-    if(this._authService.loggedIn()){
-      return true
-    } else{
+    let token = localStorage.getItem('token')? localStorage.getItem('token') : null;
+    if(token==null)
+    {
       this._router.navigate(['login']);
-      return false
+      return false;
+    }else
+    {
+      return true;
     }
   }
 

@@ -22,11 +22,11 @@ export class LoginComponent implements OnInit {
   {
     if (loginform.invalid){
       {
+        alert("invalid form");
         return;
       }
     }
+    alert("made past invalid form");
     this.authservice.login(loginform.value.enteredusername, loginform.value.enteredpassword)
-    this.router.navigate(['']);
-    this.authservice.signup(loginform.value.enteredusername, loginform.value.enteredpassword)
   }
 }
