@@ -14,8 +14,8 @@ export class IssuesCreateComponent implements OnInit {
               private _router : Router) { }
 
   ngOnInit(): void {
-
   }
+
   onaddissue(issueform: NgForm)
   {
     if(issueform.invalid)
@@ -23,10 +23,6 @@ export class IssuesCreateComponent implements OnInit {
       alert('Invalid!')
       return
     }
-    alert(issueform.value.enteredID
-    + ':'
-    + issueform.value.enteredName)
-
     this.issueservice.addissue_service(issueform.value.enteredID,issueform.value.enteredName)
     issueform.resetForm()
   }

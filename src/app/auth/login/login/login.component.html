@@ -13,16 +13,22 @@
                 <div class="col">
                   <label for="validationServer01">User Name</label>
                   <input type="text" ngModel name="enteredusername" class="form-control" id="validationServer01" minlength="1" placeholder="Username" required #enteredusername="ngModel">
+                  <div *ngIf="enteredusername.invalid && (enteredusername.dirty || enteredusername.touched)">invalid</div>
                 </div>
-              </div>
+              </div>\
+              <br>
               <div class="form-row">
                 <div class="col">
                   <label for="validationServer02">User Password</label>
                   <input type="password" ngModel name="enteredpassword" minlength="1" class="form-control" id="validationServer02" placeholder="Password" value="Rahad" #enteredpassword="ngModel" required>
+                  <div *ngIf="enteredpassword.invalid && (enteredpassword.dirty || enteredpassword.touched)">invalid</div>
                 </div>
               </div>
+              <br>
               <button class="btn btn-primary" type="submit">login</button>
             </form>
+            <br>
+            <a routerLink="/signup">or Sign up</a>
           </div>
         </div>
       </div>
